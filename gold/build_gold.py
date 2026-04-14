@@ -1,3 +1,5 @@
+"""Build gold-layer analytical tables from the cleaned silver dataset."""
+
 from pathlib import Path
 import pandas as pd
 
@@ -7,6 +9,7 @@ GOLD_DIR = ROOT_DIR / "data" / "gold"
 
 
 def load_silver() -> pd.DataFrame:
+    """Load the cleaned silver dataset used to build analytical outputs."""
     if not SILVER_FILE.exists():
         raise FileNotFoundError(f"Missing silver file: {SILVER_FILE}")
     df = pd.read_csv(SILVER_FILE)
@@ -15,6 +18,7 @@ def load_silver() -> pd.DataFrame:
 
 
 def build_dim_customer(df: pd.DataFrame) -> pd.DataFrame:
+    """Create the customer dimension from CRM-style customer attributes."""
     dim_customer = (
         df[["customer_id", "customer_name", "city", "country"]]
         .drop_duplicates()
@@ -26,6 +30,7 @@ def build_dim_customer(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_dim_product(df: pd.DataFrame) -> pd.DataFrame:
+    """Create the product dimension for analytical reporting."""
     dim_product = (
         df[["product_id", "product_name", "category"]]
         .drop_duplicates()
@@ -37,6 +42,7 @@ def build_dim_product(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def build_dim_date(df: pd.DataFrame) -> pd.DataFrame:
+    """Create the date dimension used by the gold fact table."""
     dim_date = pd.DataFrame({
         "full_date": sorted(df["order_date"].dropna().drop_duplicates())
     }).reset_index(drop=True)
@@ -70,6 +76,7 @@ def build_fact_sales(
     dim_customer: pd.DataFrame,
     dim_product: pd.DataFrame,
 ) -> pd.DataFrame:
+    """Create the fact table with sales measures and surrogate keys."""
     fact = df.copy()
 
     fact = fact.merge(
@@ -107,6 +114,7 @@ def save_gold(
     dim_date: pd.DataFrame,
     fact_sales: pd.DataFrame,
 ) -> None:
+    """Persist the gold analytical model to CSV files."""
     GOLD_DIR.mkdir(parents=True, exist_ok=True)
 
     dim_customer.to_csv(GOLD_DIR / "dim_customer.csv", index=False)

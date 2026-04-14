@@ -1,3 +1,5 @@
+"""Generate bronze-layer raw CRM and sales input data."""
+
 from pathlib import Path
 import random
 import pandas as pd
@@ -8,9 +10,10 @@ OUTPUT_FILE = OUTPUT_DIR / "sales_raw.csv"
 
 
 def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
+    """Create raw CRM-style sales records for the bronze layer."""
     random.seed(seed)
 
-    # 🔹 Expanded customers
+    # Customer master data used as the CRM-style source input.
     cities = [
         ("Berlin", "Germany"), ("Paris", "France"), ("Madrid", "Spain"),
         ("Rome", "Italy"), ("Amsterdam", "Netherlands"),
@@ -29,7 +32,7 @@ def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
             "country": country
         })
 
-    # 🔹 Expanded products
+    # Product master data referenced by the raw transactions.
     products = [
         {"product_id": "P001", "product_name": "Laptop", "category": "Electronics", "unit_price": 1200},
         {"product_id": "P002", "product_name": "Mouse", "category": "Accessories", "unit_price": 25},
@@ -48,7 +51,7 @@ def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
         {"product_id": "P015", "product_name": "Switch", "category": "Networking", "unit_price": 90},
     ]
 
-    # 🔹 Longer date range
+    # Transaction date range used for raw order generation.
     dates = pd.date_range("2025-01-01", "2026-03-31", freq="D")
 
     rows = []
@@ -56,14 +59,14 @@ def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
     for i in range(1, num_rows + 1):
         customer = random.choice(customers)
 
-        # skew: some products appear more often
+        # Skew product frequency so the synthetic sales mix is less uniform.
         product = random.choices(products, weights=[10, 20, 15, 8, 5, 7, 6, 10, 4, 6, 12, 8, 5, 3, 3])[0]
 
         order_date = random.choice(dates)
 
         quantity = max(1, int(random.gauss(2, 1)))  # more realistic distribution
 
-        # random discount
+        # Apply simple discounting before writing the raw transaction.
         discount = random.choice([0, 0, 0, 0.1, 0.2])
         unit_price = product["unit_price"] * (1 - discount)
 
@@ -81,7 +84,7 @@ def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
             "unit_price": round(unit_price, 2),
         }
 
-        # 🔹 introduce missing values (realistic noise)
+        # Inject a small amount of realistic missing CRM data.
         if random.random() < 0.02:
             row["customer_name"] = None
 
@@ -89,7 +92,7 @@ def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
 
     df = pd.DataFrame(rows)
 
-    # 🔹 duplicates
+    # Inject a few duplicates so the silver layer has cleanup work to do.
     if not df.empty:
         df = pd.concat([df, df.sample(frac=0.01)], ignore_index=True)
 

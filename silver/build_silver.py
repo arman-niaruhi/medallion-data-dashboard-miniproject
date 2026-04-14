@@ -1,3 +1,5 @@
+"""Build the silver-layer cleaned sales dataset from bronze input data."""
+
 from pathlib import Path
 import pandas as pd
 
@@ -8,12 +10,14 @@ SILVER_FILE = SILVER_DIR / "sales_clean.csv"
 
 
 def load_bronze() -> pd.DataFrame:
+    """Load the bronze raw CRM and transactional sales input."""
     if not BRONZE_FILE.exists():
         raise FileNotFoundError(f"Missing bronze file: {BRONZE_FILE}")
     return pd.read_csv(BRONZE_FILE)
 
 
 def clean_data(df: pd.DataFrame) -> pd.DataFrame:
+    """Standardize, validate, and enrich the bronze dataset for silver use."""
     df = df.copy()
 
     required_columns = [
@@ -73,10 +77,10 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def save_silver(df: pd.DataFrame) -> None:
+    """Persist the cleaned silver-layer dataset."""
     SILVER_DIR.mkdir(parents=True, exist_ok=True)
     df.to_csv(SILVER_FILE, index=False)
     print(f"Silver file written: {SILVER_FILE} ({len(df)} rows)")
-    
 
 
 if __name__ == "__main__":

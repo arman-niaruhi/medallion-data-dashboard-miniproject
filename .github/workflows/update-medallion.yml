@@ -26,11 +26,15 @@ jobs:
       - name: Run bronze container
         run: docker run --rm -v "$PWD/data:/data" medallion-bronze
 
+      - name: Validate bronze output
+        run: test -f data/bronze/sales_raw.csv
+
       - name: Upload bronze output
         uses: actions/upload-artifact@v4
         with:
           name: bronze-data
           path: data/bronze/
+          if-no-files-found: error
 
   silver:
     runs-on: ubuntu-latest
@@ -52,11 +56,15 @@ jobs:
       - name: Run silver container
         run: docker run --rm -v "$PWD/data:/data" medallion-silver
 
+      - name: Validate silver output
+        run: test -f data/silver/sales_clean.csv
+
       - name: Upload silver output
         uses: actions/upload-artifact@v4
         with:
           name: silver-data
           path: data/silver/
+          if-no-files-found: error
 
   gold:
     runs-on: ubuntu-latest
@@ -91,11 +99,19 @@ jobs:
       - name: Run gold container
         run: docker run --rm -v "$PWD/data:/data" medallion-gold
 
+      - name: Validate gold output
+        run: |
+          test -f data/gold/dim_customer.csv
+          test -f data/gold/dim_product.csv
+          test -f data/gold/dim_date.csv
+          test -f data/gold/fact_sales.csv
+
       - name: Upload gold output
         uses: actions/upload-artifact@v4
         with:
           name: gold-data
           path: data/gold/
+          if-no-files-found: error
 
       - name: Set up Python
         uses: actions/setup-python@v5

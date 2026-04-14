@@ -23,6 +23,7 @@ DIMENSION_OPTIONS = {
 
 
 def load_data():
+    """Load the gold-layer analytical tables used by the dashboard."""
     fact_sales = pd.read_csv(BASE / "fact_sales.csv")
     dim_customer = pd.read_csv(BASE / "dim_customer.csv")
     dim_product = pd.read_csv(BASE / "dim_product.csv")
@@ -60,7 +61,7 @@ df = (
 )
 
 st.title("Sales Performance Dashboard")
-st.caption("Interactive view of revenue, volume, pricing, customers, and products.")
+st.caption("Interactive view of the gold analytical data built from CRM-style sales records.")
 
 with st.sidebar:
     st.header("Controllers")
@@ -113,6 +114,7 @@ overview_tab, breakdown_tab, trend_tab, insights_tab, details_tab = st.tabs(
 
 with overview_tab:
     st.header("Overview")
+    st.caption("Executive summary of the gold-layer sales model.")
     metric_cols = st.columns(4)
     metric_cols[0].metric("Revenue", f"{total_revenue:,.2f}")
     metric_cols[1].metric("Orders", f"{total_orders:,}")
@@ -121,6 +123,7 @@ with overview_tab:
 
 with breakdown_tab:
     st.header("Performance Breakdown")
+    st.caption("Commercial analysis of products, categories, customers, and sales value.")
     left_col, right_col = st.columns((1.2, 1))
 
     with left_col:
@@ -141,6 +144,7 @@ with breakdown_tab:
 
 with trend_tab:
     st.header("Trend Analysis")
+    st.caption("Time-based analysis built from the gold date dimension and fact sales table.")
     monthly_trend = (
         filtered_df
         .groupby(["year", "month", "month_name"], as_index=False)[trend_metric_column]
@@ -153,6 +157,7 @@ with trend_tab:
 
 with insights_tab:
     st.header("Geography and Category")
+    st.caption("Customer geography and category mix derived from CRM and product dimensions.")
     col_a, col_b = st.columns(2)
 
     with col_a:
@@ -178,6 +183,7 @@ with insights_tab:
 
 with details_tab:
     st.header("Detailed Data")
+    st.caption("Filtered transaction-level records from the gold analytical dataset.")
     display_columns = [
         "sales_id",
         "full_date",

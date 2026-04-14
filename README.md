@@ -7,7 +7,7 @@ The repository includes:
 - `silver/`: cleaned and standardized transformations
 - `gold/`: dimensional/star-style analytical outputs
 - `dashboard/`: Streamlit app for exploring the gold data
-- `.github/workflows/ci-cd.yml`: CI/CD workflow for rebuilding datasets and validating the app
+- `.github/workflows/update-medallion.yml`: CI/CD workflow for rebuilding datasets and validating the app
 
 ## Project Structure
 
@@ -49,6 +49,13 @@ Filters remain in the sidebar and apply across all tabs:
 - trend variable
 - top results count
 
+## Data Layers
+
+- `CRM data`: customer master and transactional sales data, including customer IDs, customer names, city, country, order dates, product details, quantity, and unit price.
+- `Bronze input data`: raw synthetic sales and CRM-style records generated from source fields such as customer, location, product, order date, quantity, and unit price.
+- `Silver cleaned data`: standardized and cleaned sales dataset with trimmed text fields, corrected data types, removed duplicates, handled missing values, and calculated transaction amount.
+- `Gold analytical data`: business-ready dimensional model with `fact_sales`, `dim_customer`, `dim_product`, and `dim_date` tables for reporting and dashboard analysis.
+
 ## Run Locally
 
 ### 1. Install dashboard dependencies
@@ -83,7 +90,7 @@ docker compose -f compose.yml up --build
 
 ## CI/CD
 
-The GitHub Actions workflow at `.github/workflows/ci-cd.yml`:
+The GitHub Actions workflow at `.github/workflows/update-medallion.yml`:
 
 - installs Python dependencies from `dashboard/requirements.txt`
 - rebuilds the bronze, silver, and gold datasets
