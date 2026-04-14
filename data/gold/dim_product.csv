@@ -1,0 +1,6 @@
+product_key,product_id,product_name,category
+1,P001,Laptop,Electronics
+2,P002,Mouse,Accessories
+3,P003,Keyboard,Accessories
+4,P004,Monitor,Electronics
+5,P005,Dock,Peripherals

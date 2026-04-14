@@ -1,0 +1,94 @@
+name: Update Medallion Pipeline
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "bronze/**"
+      - "silver/**"
+      - "gold/**"
+      - ".github/workflows/update-medallion.yml"
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  bronze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Build bronze image
+        run: docker build -t medallion-bronze ./bronze
+
+      - name: Run bronze container
+        run: docker run --rm -v "$PWD/data:/data" medallion-bronze
+
+      - name: Upload bronze output
+        uses: actions/upload-artifact@v4
+        with:
+          name: bronze-data
+          path: data/bronze/
+
+  silver:
+    runs-on: ubuntu-latest
+    needs: bronze
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download bronze output
+        uses: actions/download-artifact@v4
+        with:
+          name: bronze-data
+          path: data/bronze/
+
+      - name: Build silver image
+        run: docker build -t medallion-silver ./silver
+
+      - name: Run silver container
+        run: docker run --rm -v "$PWD/data:/data" medallion-silver
+
+      - name: Upload silver output
+        uses: actions/upload-artifact@v4
+        with:
+          name: silver-data
+          path: data/silver/
+
+  gold:
+    runs-on: ubuntu-latest
+    needs: silver
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download bronze output
+        uses: actions/download-artifact@v4
+        with:
+          name: bronze-data
+          path: data/bronze/
+
+      - name: Download silver output
+        uses: actions/download-artifact@v4
+        with:
+          name: silver-data
+          path: data/silver/
+
+      - name: Build gold image
+        run: docker build -t medallion-gold ./gold
+
+      - name: Run gold container
+        run: docker run --rm -v "$PWD/data:/data" medallion-gold
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/bronze data/silver data/gold
+          git diff --cached --quiet || git commit -m "Update bronze silver gold outputs"
+          git push
