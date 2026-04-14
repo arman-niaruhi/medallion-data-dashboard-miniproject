@@ -24,7 +24,7 @@ jobs:
         run: docker build -t medallion-bronze ./bronze
 
       - name: Run bronze container
-        run: docker run --rm -v "$PWD/data:/data" medallion-bronze
+        run: docker run --rm --user "$(id -u):$(id -g)" -v "$PWD/data:/data" medallion-bronze
 
       - name: Validate bronze output
         run: test -f data/bronze/sales_raw.csv
@@ -54,7 +54,7 @@ jobs:
         run: docker build -t medallion-silver ./silver
 
       - name: Run silver container
-        run: docker run --rm -v "$PWD/data:/data" medallion-silver
+        run: docker run --rm --user "$(id -u):$(id -g)" -v "$PWD/data:/data" medallion-silver
 
       - name: Validate silver output
         run: test -f data/silver/sales_clean.csv
@@ -97,7 +97,7 @@ jobs:
         run: docker build -t medallion-gold ./gold
 
       - name: Run gold container
-        run: docker run --rm -v "$PWD/data:/data" medallion-gold
+        run: docker run --rm --user "$(id -u):$(id -g)" -v "$PWD/data:/data" medallion-gold
 
       - name: Validate gold output
         run: |

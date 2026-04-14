@@ -3,6 +3,7 @@ services:
     build:
       context: ./bronze
     container_name: medallion-bronze
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
       - ./data:/data
 
@@ -10,6 +11,7 @@ services:
     build:
       context: ./silver
     container_name: medallion-silver
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
       - ./data:/data
     depends_on:
@@ -19,6 +21,7 @@ services:
     build:
       context: ./gold
     container_name: medallion-gold
+    user: "${UID:-1000}:${GID:-1000}"
     volumes:
       - ./data:/data
     depends_on:
