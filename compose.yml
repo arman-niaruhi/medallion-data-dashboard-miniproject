@@ -1,0 +1,25 @@
+services:
+  bronze:
+    build:
+      context: ./bronze
+    container_name: medallion-bronze
+    volumes:
+      - ./data:/data
+
+  silver:
+    build:
+      context: ./silver
+    container_name: medallion-silver
+    volumes:
+      - ./data:/data
+    depends_on:
+      - bronze
+
+  gold:
+    build:
+      context: ./gold
+    container_name: medallion-gold
+    volumes:
+      - ./data:/data
+    depends_on:
+      - silver

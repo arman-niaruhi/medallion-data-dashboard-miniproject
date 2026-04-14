@@ -1,0 +1,6 @@
+customer_key,customer_id,customer_name,city,country
+1,C001,Alice,Berlin,Germany
+2,C002,Bob,Paris,France
+3,C003,Charlie,Madrid,Spain
+4,C004,Diana,Rome,Italy
+5,C005,Ethan,Amsterdam,Netherlands
