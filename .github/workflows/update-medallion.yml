@@ -59,38 +59,44 @@ jobs:
           name: silver-data
           path: data/silver/
 
-  gold:
-    runs-on: ubuntu-latest
-    needs: silver
-    permissions:
-      contents: write
+    gold:
+      runs-on: ubuntu-latest
+      needs: silver
+      permissions:
+        contents: write
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      steps:
+        - name: Checkout repo
+          uses: actions/checkout@v4
 
-      - name: Download bronze output
-        uses: actions/download-artifact@v4
-        with:
-          name: bronze-data
-          path: data/bronze/
+        - name: Download bronze output
+          uses: actions/download-artifact@v4
+          with:
+            name: bronze-data
+            path: data/bronze/
 
-      - name: Download silver output
-        uses: actions/download-artifact@v4
-        with:
-          name: silver-data
-          path: data/silver/
+        - name: Download silver output
+          uses: actions/download-artifact@v4
+          with:
+            name: silver-data
+            path: data/silver/
 
-      - name: Build gold image
-        run: docker build -t medallion-gold ./gold
+        - name: Build gold image
+          run: docker build -t medallion-gold ./gold
 
-      - name: Run gold container
-        run: docker run --rm -v "$PWD/data:/data" medallion-gold
+        - name: Run gold container
+          run: docker run --rm -v "$PWD/data:/data" medallion-gold
 
-      - name: Commit updated data
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/bronze data/silver data/gold
-          git diff --cached --quiet || git commit -m "Update bronze silver gold outputs"
-          git push
+        - name: Upload gold output
+          uses: actions/upload-artifact@v4
+          with:
+            name: gold-data
+            path: data/gold/
+
+        - name: Commit updated data
+          run: |
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/bronze data/silver data/gold
+            git diff --cached --quiet || git commit -m "Update bronze silver gold outputs"
+            git push
