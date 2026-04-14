@@ -2,7 +2,8 @@ from pathlib import Path
 import random
 import pandas as pd
 
-OUTPUT_DIR = Path("/data/bronze")
+ROOT_DIR = Path(__file__).resolve().parents[1]
+OUTPUT_DIR = ROOT_DIR / "data" / "bronze"
 OUTPUT_FILE = OUTPUT_DIR / "sales_raw.csv"
 
 

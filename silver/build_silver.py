@@ -1,8 +1,9 @@
 from pathlib import Path
 import pandas as pd
 
-BRONZE_FILE = Path("/data/bronze/sales_raw.csv")
-SILVER_DIR = Path("/data/silver")
+ROOT_DIR = Path(__file__).resolve().parents[1]
+BRONZE_FILE = ROOT_DIR / "data" / "bronze" / "sales_raw.csv"
+SILVER_DIR = ROOT_DIR / "data" / "silver"
 SILVER_FILE = SILVER_DIR / "sales_clean.csv"
 
 
