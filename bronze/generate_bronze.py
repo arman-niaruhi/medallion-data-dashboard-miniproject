@@ -7,7 +7,7 @@ OUTPUT_DIR = ROOT_DIR / "data" / "bronze"
 OUTPUT_FILE = OUTPUT_DIR / "sales_raw.csv"
 
 
-def generate_synthetic_raw_csv(num_rows: int = 5000, seed: int = 42) -> None:
+def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
     random.seed(seed)
 
     # 🔹 Expanded customers
@@ -100,4 +100,4 @@ def generate_synthetic_raw_csv(num_rows: int = 5000, seed: int = 42) -> None:
 
 
 if __name__ == "__main__":
-    generate_synthetic_raw_csv()
+    generate_synthetic_raw_csv(100)
