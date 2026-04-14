@@ -4,3 +4,13 @@ product_key,product_id,product_name,category
 3,P003,Keyboard,Accessories
 4,P004,Monitor,Electronics
 5,P005,Dock,Peripherals
+6,P006,Tablet,Electronics
+7,P007,Phone,Electronics
+8,P008,Headphones,Audio
+9,P009,Speaker,Audio
+10,P010,Webcam,Accessories
+11,P011,Charger,Accessories
+12,P012,SSD,Storage
+13,P013,HDD,Storage
+14,P014,Router,Networking
+15,P015,Switch,Networking
