@@ -4999,53 +4999,53 @@ order_id,order_date,customer_id,customer_name,city,country,product_id,product_na
 104998,2025-05-11,C014,Customer_14,Paris,France,P013,HDD,Storage,1,100.0
 104999,2026-02-06,C003,Customer_3,Amsterdam  ,Netherlands,P001,Laptop,Electronics,1,1200.0
 105000,2025-08-15,C014,Customer_14,Paris,France,P009,Speaker,Audio ,1,200.0
-104933,2025-05-15,C013,Customer_13,Berlin,Germany,P002,Mouse,Accessories,3,25.0
-104777,2025-10-31,C001,Customer_1,Paris,France,P013,HDD,Storage,2,100.0
-104856,2025-08-09,C014,Customer_14 ,Paris,France,P003,Keyboard,Accessories,1,75.0
-100770,2025-09-21,C013,Customer_13,Berlin,Germany,P003,Keyboard,Accessories,2,67.5
-101831,2025-12-08,C004,Customer_4,Rome  ,Italy,P001,Laptop,Electronics,1,1200.0
-101702,2025-08-31,C014,Customer_14,Paris,France,P002,Mouse,Accessories,3,25.0
-102627,2025-01-21,C013,Customer_13,Berlin,Germany,P003,Keyboard,Accessories,2,75.0
-101840,2025-04-23,C008,Customer_8,Prague,Czech Republic,P006,Tablet,Electronics,1,600.0
-102084,2025-06-22,C003,Customer_3,Amsterdam,Netherlands,P003,Keyboard,Accessories,3,75.0
-102701,2026-02-11,C008,Customer_8,Prague,Czech Republic,P015,Switch,Networking,1,81.0
-101562,2025-09-17,C010,Customer_10,Lisbon,Portugal,P008,Headphones,Audio,1,120.0
-102946,2026-02-13,C011,Customer_11,Brussels,Belgium,P002,Mouse,Accessories,1,25.0
-100969,2025-06-07,C012,Customer_12,Berlin,Germany,P004,Monitor,Electronics,1,270.0
-103991,2025-01-28,C014,Customer_14,Paris,France,P003,Keyboard,Accessories,2,60.0
-102818,2026-03-04,C001,Customer_1,Paris,France,P004,Monitor,Electronics,2,270.0
-100679,2025-03-08,C008,Customer_8,Prague  ,Czech Republic,P010,Webcam,Accessories,3,80.0
-103291,2025-12-31,C008,Customer_8 ,Prague,Czech Republic,P010,Webcam,Accessories,2,80.0
-104050,2025-12-18,C007,Customer_7,Paris,France,P010,Webcam,Accessories,2,64.0
-103871,2025-08-31,C017,Customer_17,Prague,Czech Republic,P004,Monitor,Electronics,2,240.0
-103303,2025-04-23,C010,Customer_10,Lisbon,Portugal,P003,Keyboard,Accessories,2,75.0
-101791,2025-04-08,C003,Customer_3,Amsterdam,Netherlands,P002,Mouse,Accessories,1,22.5
-104421,2026-01-08,C020,,Prague,Czech Republic,P003,Keyboard,Accessories,3,75.0
-102330,2025-01-15,C016,Customer_16,Rome,Italy,P002,Mouse,Accessories,4,25.0
-101091,2025-03-21,C001,Customer_1,Paris,France,P003,Keyboard,Accessories ,3,60.0
-104340,2025-03-10,C013,Customer_13,Berlin,Germany,P012,SSD,Storage,3,150.0
-101939,2025-03-18,C011,Customer_11,Brussels,Belgium,P015,Switch,Networking,1,90.0
-104089,2025-11-26,C018,Customer_18,Lisbon,Portugal,P014,Router,Networking,2,130.0
-101026,2025-01-25,C009,Customer_9,Paris,France,P008,Headphones,Audio,1,120.0
-101351,2025-12-10,C001,Customer_1,Paris,France,P006,Tablet,Electronics,1,600.0
-103121,2026-01-25,C018,Customer_18,Lisbon,Portugal,P012,SSD,Storage,2,150.0
-100391,2025-12-30,C010,Customer_10,Lisbon,Portugal,P010,Webcam,Accessories,1,72.0
-103561,2026-02-02,C004,Customer_4,Rome,Italy,P002,Mouse,Accessories,1,25.0
-100263,2025-11-27,C016,Customer_16,Rome,Italy,P012,SSD,Storage,2,150.0
-102315,2025-04-16,C009,Customer_9,Paris,France,P011,Charger,Accessories,1,40.0
-100444,2025-11-21,C015,Customer_15,Rome,Italy,P011,Charger,Accessories,1,40.0
-104063,2025-05-03,C019,Customer_19,Berlin,Germany,P011,Charger,Accessories,2,40.0
-102450,2025-05-12,C015,Customer_15,Rome,Italy,P004,Monitor,Electronics,1,300.0
-102917,2026-02-23,C003,,Amsterdam,Netherlands,P013,HDD,Storage,1,80.0
-104336,2025-06-19,C001,Customer_1,Paris,France,P007,Phone,Electronics,1,810.0
-100688,2026-01-30,C017,Customer_17,Prague,Czech Republic,P002,Mouse,Accessories,1,25.0
-102665,2025-04-25,C020,,Prague,Czech Republic,P010,Webcam,Accessories,3,80.0
-101155,2025-10-01,C013,Customer_13 ,Berlin  ,Germany,P001,Laptop,Electronics,2,1200.0
-101669,2026-02-14,C003,Customer_3,Amsterdam,Netherlands,P005,Dock,Peripherals,3,150.0
-102918,2025-05-04,C010,Customer_10,Lisbon,Portugal,P007,Phone,Electronics,2,900.0
-102237,2025-05-27,C006,Customer_6,Madrid,Spain,P002,Mouse,Accessories,2,22.5
+103447,2025-10-02,C016,Customer_16,Rome,Italy,P006,Tablet,Electronics,1,480.0
+102132,2025-04-06,C010,Customer_10,Lisbon,Portugal,P013,HDD,Storage,1,100.0
+104994,2025-01-16,C016,Customer_16,Rome,Italy,P001,Laptop,Electronics,2,1200.0
+104744,2026-03-20,C006,Customer_6,Madrid,Spain,P008,Headphones,Audio,3,96.0
+104439,2025-07-09,C020,Customer_20,Prague,Czech Republic,P002,Mouse,Accessories,1,25.0
+104925,2025-08-07,C017,Customer_17,Prague,Czech Republic,P011,Charger,Accessories,2,36.0
+103910,2025-12-09,C013,Customer_13,Berlin,Germany,P005,Dock,Peripherals,1,150.0
+100254,2025-04-11,C014,Customer_14,Paris,France,P003,Keyboard,Accessories,2,75.0
+103026,2025-05-21,C011,Customer_11,Brussels,Belgium,P004,Monitor,Electronics,2,300.0
+101522,2025-12-06,C020,Customer_20,Prague,Czech Republic,P011,Charger,Accessories,3,32.0
+101598,2025-02-27,C013,Customer_13,Berlin,Germany,P002,Mouse,Accessories,2,25.0
+102033,2026-03-02,C005,Customer_5,Rome,Italy,P012,SSD,Storage,1,135.0
+104375,2025-06-10,C016,Customer_16 ,Rome,Italy,P014,Router,Networking,1,130.0
+102558,2026-03-24,C001,Customer_1,Paris,France,P014,Router,Networking,3,117.0
+103748,2025-09-26,C010,Customer_10,Lisbon,Portugal,P015,Switch,Networking,2,90.0
+104313,2025-09-06,C002,Customer_2,Berlin,Germany,P002,Mouse,Accessories,1,25.0
+104490,2026-02-25,C018,Customer_18 ,Lisbon,Portugal,P002,Mouse,Accessories,1,22.5
 100683,2025-08-13,C012,Customer_12 ,Berlin,Germany,P007,Phone,Electronics,2,900.0
-100882,2025-01-02,C005,Customer_5,Rome,Italy,P008,Headphones,Audio,2,96.0
-100787,2026-03-25,C011,Customer_11,Brussels,Belgium,P010,Webcam,Accessories,2,80.0
-100237,2025-04-03,C002,Customer_2,Berlin,Germany,P003,Keyboard,Accessories,2,67.5
-101233,2025-04-15,C016,Customer_16,Rome,Italy,P003,Keyboard,Accessories,3,60.0
+101820,2025-05-30,C010,Customer_10,Lisbon,Portugal,P002,Mouse,Accessories,1,25.0
+102739,2025-06-21,C017,Customer_17,Prague  ,Czech Republic,P004,Monitor,Electronics,3,300.0
+101914,2025-04-04,C002,Customer_2,Berlin,Germany,P007,Phone,Electronics,1,810.0
+101058,2025-08-03,C014,Customer_14,Paris,France,P001,Laptop,Electronics ,4,960.0
+103391,2025-07-28,C020,Customer_20 ,Prague,Czech Republic,P014,Router,Networking,1,117.0
+103884,2026-03-15,C016,Customer_16,Rome,Italy,P003,Keyboard,Accessories,2,60.0
+103368,2025-05-17,C001,Customer_1,Paris,France,P010,Webcam,Accessories,1,72.0
+104429,2026-03-10,C011,Customer_11,Brussels,Belgium,P008,Headphones,Audio,2,96.0
+103701,2025-07-18,C004,Customer_4,Rome,Italy,P001,Laptop,Electronics,3,1200.0
+101975,2025-01-24,C001,Customer_1,Paris,France,P003,Keyboard,Accessories,1,75.0
+102770,2026-01-22,C019,Customer_19,Berlin,Germany,P001,Laptop,Electronics,1,1200.0
+104623,2026-03-30,C016,Customer_16,Rome,Italy,P012,SSD,Storage,1,150.0
+102686,2025-12-17,C018,Customer_18,Lisbon,Portugal,P007,Phone,Electronics,2,900.0
+101609,2026-01-04,C009,Customer_9,Paris,France,P010,Webcam,Accessories,1,80.0
+104701,2025-11-26,C010,Customer_10,Lisbon,Portugal,P003,Keyboard,Accessories,1,75.0
+102361,2026-01-24,C005,,Rome,Italy,P011,Charger,Accessories,1,40.0
+102841,2025-12-04,C014,Customer_14,Paris,France,P003,Keyboard,Accessories,1,67.5
+103152,2025-09-05,C009,Customer_9,Paris,France,P009,Speaker,Audio,3,200.0
+100812,2025-10-08,C002,Customer_2,Berlin,Germany,P010,Webcam,Accessories,3,64.0
+100594,2026-02-01,C013,Customer_13,Berlin,Germany,P012,SSD,Storage,1,150.0
+104560,2025-10-31,C005,Customer_5,Rome,Italy,P005,Dock,Peripherals,2,120.0
+100141,2025-01-27,C020,Customer_20,Prague,Czech Republic,P002,Mouse,Accessories,2,25.0
+104239,2025-06-15,C009,Customer_9,Paris,France,P003,Keyboard,Accessories,2,75.0
+104792,2026-01-01,C011,Customer_11 ,Brussels,Belgium,P011,Charger,Accessories,1,36.0
+102494,2025-11-23,C007,Customer_7,Paris  ,France,P012,SSD,Storage,2,150.0
+101289,2025-09-27,C001,Customer_1 ,Paris,France,P011,Charger,Accessories ,2,36.0
+103095,2025-12-06,C020,Customer_20,Prague,Czech Republic,P007,Phone,Electronics,2,810.0
+101885,2025-10-21,C018,Customer_18,Lisbon,Portugal,P014,Router,Networking,2,130.0
+104598,2025-08-18,C011,Customer_11,Brussels,Belgium,P012,SSD,Storage,2,120.0
+104561,2025-09-13,C019,Customer_19,Berlin,Germany,P003,Keyboard,Accessories,2,75.0
+104543,2026-02-17,C018,Customer_18,Lisbon,Portugal,P013,HDD,Storage,1,100.0
+102017,2025-05-10,C017,Customer_17 ,Prague,Czech Republic,P003,Keyboard,Accessories,1,75.0
