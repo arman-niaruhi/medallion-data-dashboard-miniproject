@@ -75,6 +75,7 @@ def save_silver(df: pd.DataFrame) -> None:
     SILVER_DIR.mkdir(parents=True, exist_ok=True)
     df.to_csv(SILVER_FILE, index=False)
     print(f"Silver file written: {SILVER_FILE} ({len(df)} rows)")
+    
 
 
 if __name__ == "__main__":
