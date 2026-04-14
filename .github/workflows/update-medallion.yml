@@ -70,6 +70,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Download bronze output
         uses: actions/download-artifact@v4
@@ -94,6 +96,26 @@ jobs:
         with:
           name: gold-data
           path: data/gold/
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dashboard dependencies
+        run: pip install -r dashboard/requirements.txt
+
+      - name: Validate generated outputs
+        run: |
+          test -f data/bronze/sales_raw.csv
+          test -f data/silver/sales_clean.csv
+          test -f data/gold/dim_customer.csv
+          test -f data/gold/dim_product.csv
+          test -f data/gold/dim_date.csv
+          test -f data/gold/fact_sales.csv
+
+      - name: Smoke test Streamlit app imports
+        run: python -c "import dashboard.app"
 
       - name: Commit updated data (triggers dashboard refresh)
         run: |
