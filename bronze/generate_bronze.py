@@ -100,4 +100,4 @@ def generate_synthetic_raw_csv(num_rows: int = 100, seed: int = 42) -> None:
 
 
 if __name__ == "__main__":
-    generate_synthetic_raw_csv(100)
+    generate_synthetic_raw_csv(10000)
