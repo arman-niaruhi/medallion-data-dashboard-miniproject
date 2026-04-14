@@ -6,7 +6,6 @@ st.set_page_config(page_title="Medallion Dashboard", layout="wide")
 
 BASE = Path(__file__).resolve().parents[1] / "data" / "gold"
 
-@st.cache_data
 def load_data():
     fact_sales = pd.read_csv(BASE / "fact_sales.csv")
     dim_customer = pd.read_csv(BASE / "dim_customer.csv")
