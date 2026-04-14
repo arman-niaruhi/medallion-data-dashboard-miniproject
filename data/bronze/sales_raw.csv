@@ -99,4 +99,4 @@ order_id,order_date,customer_id,customer_name,city,country,product_id,product_na
 100098,2025-09-08,C019,Customer_19,Berlin,Germany,P015,Switch,Networking,3,90.0
 100099,2025-06-14,C013,Customer_13,Berlin,Germany,P005,Dock,Peripherals,3,150.0
 100100,2026-02-20,C016,Customer_16,Rome,Italy,P010,Webcam,Accessories,1,72.0
-100048,2025-12-12,C015,Customer_15,Rome,Italy,P005,Dock,Peripherals,3,150.0
+100019,2025-11-20,C001,Customer_1,Paris  ,France,P001,Laptop,Electronics,2,1200.0
