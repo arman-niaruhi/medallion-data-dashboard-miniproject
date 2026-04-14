@@ -1,41 +1,21 @@
 customer_key,customer_id,customer_name,city,country
 1,C001,Customer_1,Paris,France
-2,C001,,Paris,France
-3,C002,,Berlin,Germany
-4,C002,Customer_2,Berlin,Germany
-5,C003,,Amsterdam,Netherlands
-6,C003,Customer_3,Amsterdam,Netherlands
-7,C004,,Rome,Italy
-8,C004,Customer_4,Rome,Italy
-9,C005,Customer_5,Rome,Italy
-10,C005,,Rome,Italy
-11,C006,Customer_6,Madrid,Spain
-12,C006,,Madrid,Spain
-13,C007,Customer_7,Paris,France
-14,C007,,Paris,France
-15,C008,,Prague,Czech Republic
-16,C008,Customer_8,Prague,Czech Republic
-17,C009,Customer_9,Paris,France
-18,C009,,Paris,France
-19,C010,Customer_10,Lisbon,Portugal
-20,C010,,Lisbon,Portugal
-21,C011,,Brussels,Belgium
-22,C011,Customer_11,Brussels,Belgium
-23,C012,Customer_12,Berlin,Germany
-24,C012,,Berlin,Germany
-25,C013,,Berlin,Germany
-26,C013,Customer_13,Berlin,Germany
-27,C014,Customer_14,Paris,France
-28,C014,,Paris,France
-29,C015,Customer_15,Rome,Italy
-30,C015,,Rome,Italy
-31,C016,Customer_16,Rome,Italy
-32,C016,,Rome,Italy
-33,C017,,Prague,Czech Republic
-34,C017,Customer_17,Prague,Czech Republic
-35,C018,,Lisbon,Portugal
-36,C018,Customer_18,Lisbon,Portugal
-37,C019,,Berlin,Germany
-38,C019,Customer_19,Berlin,Germany
-39,C020,,Prague,Czech Republic
-40,C020,Customer_20,Prague,Czech Republic
+2,C002,Customer_2,Berlin,Germany
+3,C003,Customer_3,Amsterdam,Netherlands
+4,C004,Customer_4,Rome,Italy
+5,C005,Customer_5,Rome,Italy
+6,C006,Customer_6,Madrid,Spain
+7,C007,Customer_7,Paris,France
+8,C008,Customer_8,Prague,Czech Republic
+9,C009,Customer_9,Paris,France
+10,C010,Customer_10,Lisbon,Portugal
+11,C011,Customer_11,Brussels,Belgium
+12,C012,Customer_12,Berlin,Germany
+13,C013,Customer_13,Berlin,Germany
+14,C014,Customer_14,Paris,France
+15,C015,Customer_15,Rome,Italy
+16,C016,Customer_16,Rome,Italy
+17,C017,Customer_17,Prague,Czech Republic
+18,C018,Customer_18,Lisbon,Portugal
+19,C019,Customer_19,Berlin,Germany
+20,C020,Customer_20,Prague,Czech Republic
