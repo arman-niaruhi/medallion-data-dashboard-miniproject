@@ -111,7 +111,7 @@ def save_gold(
     dim_customer.to_csv(GOLD_DIR / "dim_customer.csv", index=False)
     dim_product.to_csv(GOLD_DIR / "dim_product.csv", index=False)
     dim_date.to_csv(GOLD_DIR / "dim_date.csv", index=False)
-    fact_sales.to_csv(GOLD_DIR / "fact_sales11.csv", index=False)
+    fact_sales.to_csv(GOLD_DIR / "fact_sales.csv", index=False)
 
     print(f"Gold files written in: {GOLD_DIR}")
 
