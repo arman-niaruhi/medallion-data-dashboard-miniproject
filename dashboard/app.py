@@ -101,86 +101,107 @@ total_orders = filtered_df["sales_id"].nunique()
 total_customers = filtered_df["customer_id"].nunique()
 avg_order_value = total_revenue / total_orders if total_orders else 0
 
-metric_cols = st.columns(4)
-metric_cols[0].metric("Revenue", f"{total_revenue:,.2f}")
-metric_cols[1].metric("Orders", f"{total_orders:,}")
-metric_cols[2].metric("Customers", f"{total_customers:,}")
-metric_cols[3].metric("Avg Order Value", f"{avg_order_value:,.2f}")
-
-left_col, right_col = st.columns((1.2, 1))
-
-with left_col:
-    st.subheader(f"{chart_metric_name} by {chart_dimension_name}")
-    breakdown = aggregate_metric(filtered_df, chart_dimension, chart_metric_name).head(top_n)
-    st.bar_chart(breakdown.set_index(chart_dimension))
-
-with right_col:
-    st.subheader("Top Products")
-    top_products = (
-        filtered_df.groupby("product_name", as_index=False)["amount"]
-        .sum()
-        .sort_values("amount", ascending=False)
-        .head(top_n)
-        .rename(columns={"amount": "revenue"})
-    )
-    st.dataframe(top_products, use_container_width=True, hide_index=True)
-
-st.subheader(f"{trend_metric_name} Trend")
-monthly_trend = (
-    filtered_df
-    .groupby(["year", "month", "month_name"], as_index=False)[trend_metric_column]
-    .sum()
-    .sort_values(["year", "month"])
-)
-monthly_trend["period"] = monthly_trend["month_name"].str[:3] + " " + monthly_trend["year"].astype(str)
-st.line_chart(monthly_trend.set_index("period")[[trend_metric_column]])
-
-col_a, col_b = st.columns(2)
-
-with col_a:
-    st.subheader("Customer Geography")
-    geography = (
-        filtered_df.groupby(["country", "city"], as_index=False)["amount"]
-        .sum()
-        .sort_values("amount", ascending=False)
-        .head(top_n)
-        .rename(columns={"amount": "revenue"})
-    )
-    st.dataframe(geography, use_container_width=True, hide_index=True)
-
-with col_b:
-    st.subheader("Category Mix")
-    category_mix = (
-        filtered_df.groupby("category", as_index=False)["amount"]
-        .sum()
-        .sort_values("amount", ascending=False)
-        .rename(columns={"amount": "revenue"})
-    )
-    st.dataframe(category_mix, use_container_width=True, hide_index=True)
-
-st.subheader("Detailed Data")
-display_columns = [
-    "sales_id",
-    "full_date",
-    "customer_name",
-    "country",
-    "city",
-    "product_name",
-    "category",
-    "quantity",
-    "unit_price",
-    "amount",
-]
-st.dataframe(
-    filtered_df[display_columns].rename(columns={"full_date": "order_date"}),
-    use_container_width=True,
-    hide_index=True,
+overview_tab, breakdown_tab, trend_tab, insights_tab, details_tab = st.tabs(
+    [
+        "Overview",
+        "Commercial",
+        "Trends",
+        "Insights",
+        "Details",
+    ]
 )
 
-csv_data = filtered_df[display_columns].to_csv(index=False).encode("utf-8")
-st.download_button(
-    "Download filtered data",
-    data=csv_data,
-    file_name="filtered_sales_data.csv",
-    mime="text/csv",
-)
+with overview_tab:
+    st.header("Overview")
+    metric_cols = st.columns(4)
+    metric_cols[0].metric("Revenue", f"{total_revenue:,.2f}")
+    metric_cols[1].metric("Orders", f"{total_orders:,}")
+    metric_cols[2].metric("Customers", f"{total_customers:,}")
+    metric_cols[3].metric("Avg Order Value", f"{avg_order_value:,.2f}")
+
+with breakdown_tab:
+    st.header("Performance Breakdown")
+    left_col, right_col = st.columns((1.2, 1))
+
+    with left_col:
+        st.markdown(f"**{chart_metric_name} by {chart_dimension_name}**")
+        breakdown = aggregate_metric(filtered_df, chart_dimension, chart_metric_name).head(top_n)
+        st.bar_chart(breakdown.set_index(chart_dimension))
+
+    with right_col:
+        st.markdown("**Top Products**")
+        top_products = (
+            filtered_df.groupby("product_name", as_index=False)["amount"]
+            .sum()
+            .sort_values("amount", ascending=False)
+            .head(top_n)
+            .rename(columns={"amount": "revenue"})
+        )
+        st.dataframe(top_products, use_container_width=True, hide_index=True)
+
+with trend_tab:
+    st.header("Trend Analysis")
+    monthly_trend = (
+        filtered_df
+        .groupby(["year", "month", "month_name"], as_index=False)[trend_metric_column]
+        .sum()
+        .sort_values(["year", "month"])
+    )
+    monthly_trend["period"] = monthly_trend["month_name"].str[:3] + " " + monthly_trend["year"].astype(str)
+    st.markdown(f"**{trend_metric_name} Trend**")
+    st.line_chart(monthly_trend.set_index("period")[[trend_metric_column]])
+
+with insights_tab:
+    st.header("Geography and Category")
+    col_a, col_b = st.columns(2)
+
+    with col_a:
+        st.markdown("**Customer Geography**")
+        geography = (
+            filtered_df.groupby(["country", "city"], as_index=False)["amount"]
+            .sum()
+            .sort_values("amount", ascending=False)
+            .head(top_n)
+            .rename(columns={"amount": "revenue"})
+        )
+        st.dataframe(geography, use_container_width=True, hide_index=True)
+
+    with col_b:
+        st.markdown("**Category Mix**")
+        category_mix = (
+            filtered_df.groupby("category", as_index=False)["amount"]
+            .sum()
+            .sort_values("amount", ascending=False)
+            .rename(columns={"amount": "revenue"})
+        )
+        st.dataframe(category_mix, use_container_width=True, hide_index=True)
+
+with details_tab:
+    st.header("Detailed Data")
+    display_columns = [
+        "sales_id",
+        "full_date",
+        "customer_name",
+        "country",
+        "city",
+        "product_name",
+        "category",
+        "quantity",
+        "unit_price",
+        "amount",
+    ]
+
+    detail_df = filtered_df[display_columns].rename(columns={"full_date": "order_date"})
+    st.dataframe(
+        detail_df,
+        use_container_width=True,
+        hide_index=True,
+    )
+
+    csv_data = filtered_df[display_columns].to_csv(index=False).encode("utf-8")
+    st.download_button(
+        "Download filtered data",
+        data=csv_data,
+        file_name="filtered_sales_data.csv",
+        mime="text/csv",
+    )
